@@ -1,5 +1,9 @@
 class QuestionsController < ApplicationController
+
+  before_action :find_question, only: [:show, :edit, :update, :destroy]
+
   def index
+    @question = Question.all
   end
 
   def show
@@ -9,5 +13,44 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    @question = Question.new
   end
+
+  def create
+    @question = Question.new(question_params)
+    if @question.save
+      redirect_to questions_path(@question), notice: "投稿に成功しました"
+    else
+      flash.now[:alert] = '入力に不備があります'
+      render 'questions/new'
+    end
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to questions_path(@question), notice: "更新に成功しました"
+    else
+      flash.now[:alert] = '入力に不備があります'
+      render 'questions/edit'
+    end
+  end
+
+  def destroy
+    if @question.destroy(question_params)
+      redirect_to questions_path, notice: "削除に成功しました"
+    else
+      redirect_to questions_path, alert: "削除できませんでした"
+    end
+  end
+
+  private
+
+  def question_params
+    params.require(:question).permit(:title, :question_image_id, :body)
+  end
+
+  def find_question
+    @question = Question.find(params[:id])
+  end
+
 end
