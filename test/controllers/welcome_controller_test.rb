@@ -5,5 +5,10 @@ class WelcomeControllerTest < ActionDispatch::IntegrationTest
     get welcome_top_url
     assert_response :success
   end
+  
+  # test "should get about" do
+  #   get welcome_about_url
+  #   assert_response :success
+  # end
 
 end
