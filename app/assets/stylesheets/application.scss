@@ -14,4 +14,13 @@
  *= require_self
  */
  @import "bootstrap-sprockets";
-@import "bootstrap";
+ @import "bootstrap";
+ #welcome-top{
+  background-image: image-url('top.jpg');
+  background-size:  cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #464646;
+  opacity:  0.9;
+ }
