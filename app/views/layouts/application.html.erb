@@ -12,6 +12,9 @@
 
   <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'shared/header' %>
-    <%= yield %>
+    <div class="container">
+  　　　<%= render 'shared/flash_messages' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

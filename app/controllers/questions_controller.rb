@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :find_question, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,11 +19,12 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @question.user_id = current_user.id
     if @question.save
       redirect_to questions_path(@question), notice: "投稿に成功しました"
     else
       flash.now[:alert] = '入力に不備があります'
-      render 'questions/new'
+      render 'new'
     end
   end
 
@@ -46,7 +48,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :question_image_id, :body)
+    params.require(:question).permit(:title, :body, :question_image, :user_id)
   end
 
   def find_question

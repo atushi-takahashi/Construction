@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @posts =  Post.all.order(created_at: :desc)
+    @questions = Question.all.order(created_at: :desc)
   end
 
   def edit
@@ -24,11 +26,12 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image_id, :occupation, :job_years, :profile)
+    params.require(:user).permit(:name, :profile_image, :occupation, :job_years, :profile)
   end
   
   def find_user
     @user = User.find(params[:id])
   end
+  
   
 end
