@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      question: 質問
+      posts: 投稿
+      
+    attributes:
+      user:
+        name: ニックネーム
+        profile_image_id: プロフィール画像
+        profile: 自己紹介文
+        occupation: 職種
+        job_years: 経験年数
+        
+      question:
+        title: タイトル
+        question_image_id: 添付写真
+        body: 本文
+        
+      post:
+        title: タイトル
+        post_image_id: 添付写真
+        body: 本文
