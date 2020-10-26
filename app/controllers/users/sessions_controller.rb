@@ -11,6 +11,6 @@ class Users::SessionsController < Devise::SessionsController
       user.occupation = "施工管理（土木)"
     end
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to user_path(user), notice: 'ゲストユーザーとしてログインしました。'
   end
 end

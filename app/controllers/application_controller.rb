@@ -2,12 +2,18 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   
+  def after_sign_in_path_for(resource)
+    user_path(current_user)
+  end
+  
   def timeline
     posts =  Post.all.order(created_at: :desc)
     questions = Question.all.order(created_at: :desc)
     @timeline = posts | questions
     @timeline.sort!{ |a, b| b.created_at <=> a.created_at }
   end
+  
+  
 
   private
 

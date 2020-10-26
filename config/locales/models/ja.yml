@@ -8,7 +8,7 @@ ja:
     attributes:
       user:
         name: ニックネーム
-        profile_image_id: プロフィール画像
+        profile_image: プロフィール画像
         profile: 自己紹介文
         occupation: 職種
         job_years: 経験年数
