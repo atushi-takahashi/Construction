@@ -1,10 +1,10 @@
 <div class="row">
+  <div class="col-lg-3">
   <% if @user.id == current_user.id %>
     <h1 class="text-left">マイページ</h1>
   <% else %>
-    <h1>ユーザー情報</h1>
+    <h1 class="text-left">ユーザー情報</h1>
   <% end %>
-  <div class="col-lg-3">
     <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg",class:"profile_no_image" %><br>
     <%= @user.name %><br>
     <%= @user.occupation %><br>
@@ -15,11 +15,5 @@
   </div>
   <div class="col-lg-9">
     <%= render 'shared/posts_index' %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-3"></div>
-  <div class="col-lg-9">
-    <%= render 'shared/questions_index' %>
   </div>
 </div>

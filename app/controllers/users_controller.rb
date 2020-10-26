@@ -2,13 +2,14 @@ class UsersController < ApplicationController
 
   before_action :find_user, only: [:show, :edit, :update]
   
+  before_action :timeline, only: [:show]
+
+  
   def index
     @user = User.all
   end
 
   def show
-    @posts =  Post.all.order(created_at: :desc)
-    @questions = Question.all.order(created_at: :desc)
   end
 
   def edit
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
   
   def update
     if @user.update(user_params)
-      redirect_to users_path(@user), notice: "更新に成功しました"
+      redirect_to user_path(@user), notice: "更新に成功しました"
     else
       flash.now[:alert] = '入力に不備があります'
       render 'users/edit'
