@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
 
-  before_action :timeline, only: [:top]
+  before_action :timeline_all, only: [:top]
 
   def top
   end

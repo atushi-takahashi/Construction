@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
     user_path(current_user)
   end
   
-  def timeline
+  def timeline_all
     posts =  Post.all.order(created_at: :desc)
     questions = Question.all.order(created_at: :desc)
-    @timeline = posts | questions
-    @timeline.sort!{ |a, b| b.created_at <=> a.created_at }
+    @timeline_all = posts | questions
+    @timeline_all.sort!{ |a, b| b.created_at <=> a.created_at }
   end
   
   

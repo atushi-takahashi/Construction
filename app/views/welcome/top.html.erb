@@ -8,15 +8,15 @@
             <th class="col-lg-7">本文</th>
         </tr>
     </thead>
-<% @timeline.each do |timeline| %>
+<% @timeline_all.each do |all| %>
     <tbody class="row">
         <tr>
             <td class="col-lg-2">
-                <%= attachment_image_tag timeline.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",class:"index_no_image" %><br>
-                <%= timeline.user.name %>
+                <%= attachment_image_tag all.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",class:"index_no_image" %><br>
+                <%= all.user.name %>
             </td>
-            <td class="col-lg-3"><%= timeline.title %></td>
-            <td class="col-lg-7"><%= timeline.body %></td>
+            <td class="col-lg-3"><%= all.title %></td>
+            <td class="col-lg-7"><%= all.body %></td>
         </tr>
     </tbody>
         <% end %>

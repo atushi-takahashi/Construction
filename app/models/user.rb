@@ -10,4 +10,5 @@ class User < ApplicationRecord
   
   attachment :profile_image, destroy: false
   
+  
 end

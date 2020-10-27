@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   before_action :find_user, only: [:show, :edit, :update]
   
-  before_action :timeline, only: [:show]
+  # before_action :timeline, only: [:show]
 
   
   def index
@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    posts =  Post.where(user_id: @user.id).order(created_at: :desc)
+    questions = Question.where(user_id: @user.id).order(created_at: :desc)
+    @timeline = posts | questions
+    @timeline.sort!{ |a, b| b.created_at <=> a.created_at }
   end
 
   def edit
