@@ -8,6 +8,11 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :questions, dependent: :destroy
   
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :post
+  has_many :favorite_questions, through: :favorites, source: :question
+  
+  
   attachment :profile_image, destroy: false
   
   

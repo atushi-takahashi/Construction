@@ -8,5 +8,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index, :edit, :update]
   resources :posts
   resources :questions
+  post   '/favorite/:post_id' => 'favorites#post_favorite', as: 'post_favorite'
+  delete '/favorite/:post_id' => 'favorites#post_unfavorite', as: 'post_unfavorite'
+  post   '/favorite/:question_id' => 'favorites#question_favorite', as: 'question_favorite'
+  delete '/favorite/:question_id' => 'favorites#question_unfavorite', as: 'question_unfavorite'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
